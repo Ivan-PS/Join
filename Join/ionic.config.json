@@ -1,0 +1,7 @@
+{
+  "name": "Join",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
