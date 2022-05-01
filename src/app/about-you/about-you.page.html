@@ -1,0 +1,33 @@
+<ion-content style="height: 100%; background-color: #DFEC46 !important;">
+  <ion-grid id ="container">
+    <ion-row>
+      <ion-col class = "buttonText" >
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Explain something about You  
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-textarea [(ngModel)] = "description">
+              
+            </ion-textarea>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>    
+    <ion-row>
+      <ion-col>
+        <ion-card (click) = "goToSearch()">
+          <ion-card-header>
+            <ion-card-title>
+              PLAY
+            </ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

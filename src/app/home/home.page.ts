@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,28 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  private subscription: Subscription;
+  topicname: any;
+  msg: any;
+  isConnected: boolean = false;
+
+
+
+  constructor(public router: Router) { }
+
+  ngOnInit() {
+  }
+
+
+  goToAboutYou(){
+    console.log('inside subscribe new topic');
+    this.router.navigate(["/about-you"])
+    /*this.subscription = this._mqttService.observe(this.topicname).subscribe((message: IMqttMessage) => {
+      this.msg = message;
+      console.log('msg: ', message)
+    });*/
+
+  }
+
 
 }

@@ -25,3 +25,31 @@
 #container a {
   text-decoration: none;
 }
+
+
+
+.defaultTextColor{
+  color: #DFEC46;
+}
+
+ion-content{
+  --ion-background-color:#DFEC46;
+}
+ion-card {
+  --background: #5B2E2E !important;
+
+}
+ion-text{
+  --ion-text-color: red;
+}
+
+
+:root {
+  /** primary **/
+  --ion-color-primary: #5B2E2E;
+  --ion-color-primary-rgb: 91, 46, 46
+  --ion-color-primary-contrast: #DFEC46;
+  --ion-color-primary-contrast-rgb: 223, 236, 70;
+  --ion-color-primary-shade: #5B2E2E;
+  --ion-color-primary-tint: #5B2E2E;
+}
