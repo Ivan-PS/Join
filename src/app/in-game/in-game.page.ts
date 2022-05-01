@@ -7,6 +7,7 @@ import { WebSocketServer } from 'ws';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { WSA_E_CANCELLED } from 'constants';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -18,10 +19,17 @@ import { WSA_E_CANCELLED } from 'constants';
 
 export class InGamePage implements OnInit {
 
-  seflCode = 0;
+  seflCode = "";
   otherDesc = ""
   selfId: any;
   otherId: any;
+
+  input = "";
+  otherCode = "";
+
+  time = "";
+  timeInt = 300;
+  timeStr = "00:00"
 
   distance = 0
 
@@ -40,7 +48,7 @@ export class InGamePage implements OnInit {
 
   private socket;
 
-  constructor(public UserServiceService: UserServiceService, public geolocation: Geolocation, public http: HttpClient) { 
+  constructor(public UserServiceService: UserServiceService, public geolocation: Geolocation, public http: HttpClient, public router: Router) { 
 
 
 
@@ -56,6 +64,7 @@ export class InGamePage implements OnInit {
     this.UserServiceService.otherUserInfo.subscribe(data =>{
       this.otherDesc = data['desc'];
       this.otherId = data.userId;
+      this.otherCode = data["userCode"];
     })
     this.coords.subscribe(data =>{
       this.distance = data.selfLat
@@ -69,11 +78,40 @@ export class InGamePage implements OnInit {
 
       this.updateSelfGeo();
 
+
     }, 5000);
+
+    var time = setInterval(() => {
+
+
+      this.updateTime();
+
+    }, 1000);
 
 
 
     
+
+  }
+
+  public updateTime(){
+    this.timeInt = this.timeInt - 1;
+    var min = Math.floor(this.timeInt/60);
+    var minStr = min.toString();
+    if(min <= 9){
+       minStr = ("0"+min.toString()).toString();
+    }
+    var seconds = this.timeInt -(min * 60);
+    var secondsStr = seconds.toString();
+    if(seconds <= 9){
+      secondsStr = ("0"+seconds.toString()).toString();
+   }
+
+   this.time = minStr +":"+secondsStr;
+
+   if(this.timeInt <= 0){
+    this.router.navigate(['lose']);
+   }
 
   }
 
@@ -88,12 +126,12 @@ export class InGamePage implements OnInit {
       
 
       
-      var iUrl = "http://192.168.9.227:8000/update_info?user_id="+userId+"&lat="+latitude+ "&lon="+longitude;
+      var iUrl = "http://65.108.253.229:8000/update_info?user_id="+userId+"&lat="+latitude+ "&lon="+longitude;
       this.http.post(iUrl, JSON.stringify({})).subscribe(data =>{
         console.log("UPDATE GEo");
-        var iUrl2 = "http://192.168.9.227:8000/get_distance?user1_id="+userId+"&user2_id="+otherId;
-        this.http.post(iUrl2, JSON.stringify({})).subscribe(data =>{
-          this.distance = data["dist"];
+        var iUrl2 = "http://65.108.253.229:8000/get_distance?user1_id="+userId+"&user2_id="+otherId;
+        this.http.get(iUrl2).subscribe(data =>{
+          this.distance = parseFloat(parseFloat(data["dist"]).toFixed(2));
         })
 
       })
@@ -104,6 +142,30 @@ export class InGamePage implements OnInit {
   }
 
 
+public checkPerson(){
+  console.log(this.otherCode);
+  
+  if (this.input === this.otherCode) {
+
+    var iUrl = "http://65.108.253.229:8000/set_win?user_id="+this.otherId
+    this.http.get(iUrl).subscribe(data =>{
+      console.log("win");
+      this.router.navigate(['/win']);
+    })
+
+  }
+}
+
+public checkInWin(){
+
+    var iUrl = "http://65.108.253.229:8000/see_win?user_id="+this.otherId
+    this.http.get(iUrl).subscribe(data =>{
+      console.log(data['state']);
+      // this.router.navigate(['/win']);
+    })
+
+  
+}
 
 
 

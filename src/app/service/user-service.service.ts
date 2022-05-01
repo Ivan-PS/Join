@@ -11,10 +11,10 @@ import { interval } from 'rxjs';
 export class UserServiceService {
 
   public startGameInfo = new BehaviorSubject({});
-  public staticSelfInfo = {'userId': 0, 'userCode': 0, 'coords': [], 'desc': ""};
-  public staticOtherInfo = {'userId': 0, 'userCode': 0, 'coords': [], 'desc': ""};
-  public userInfo = new BehaviorSubject({'userId': 0, 'userCode': 0, 'coords': [], 'desc': ""});
-  public otherUserInfo = new BehaviorSubject({'userId': 0, 'userCode': 0, 'coords': [], 'desc': ''});
+  public staticSelfInfo = {'userId': 0, 'userCode': "", 'coords': [], 'desc': ""};
+  public staticOtherInfo = {'userId': 0, 'userCode': "", 'coords': [], 'desc': ""};
+  public userInfo = new BehaviorSubject({'userId': 0, 'userCode': "", 'coords': [], 'desc': ""});
+  public otherUserInfo = new BehaviorSubject({'userId': 0, 'userCode': "", 'coords': [], 'desc': ''});
 
   constructor(public http: HttpClient, public router: Router) { }
 
@@ -26,11 +26,11 @@ export class UserServiceService {
     var httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    var iUrl = "http://192.168.9.227:8000/start?description="+description;
+    var iUrl = "http://65.108.253.229:8000/start?description="+description;
     this.http.post(iUrl, JSON.stringify({})).subscribe(data=>{
       console.log(data);
       this.userInfo.next({'userId': data["user_id"], 'userCode':  data['user_code'], 'coords': [], desc: ''});
-      iUrl = "http://192.168.9.227:8000/ask_game?user_id="+data["user_id"];
+      iUrl = "http://65.108.253.229:8000/ask_game?user_id="+data["user_id"];
       this.startGameInfo.subscribe(dataEnd=>{
         if(dataEnd !== undefined){
 

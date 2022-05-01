@@ -151,10 +151,10 @@ let InGamePage = class InGamePage {
             var longitude = resp.coords.longitude;
             var userId = this.selfId;
             var otherId = this.otherId;
-            var iUrl = "http://192.168.9.227:8000/update_info?user_id=" + userId + "&lat=" + latitude + "&lon=" + longitude;
+            var iUrl = "http://65.108.253.229:8000/update_info?user_id=" + userId + "&lat=" + latitude + "&lon=" + longitude;
             this.http.post(iUrl, JSON.stringify({})).subscribe(data => {
                 console.log("UPDATE GEo");
-                var iUrl2 = "http://192.168.9.227:8000/get_distance?user1_id=" + userId + "&user2_id=" + otherId;
+                var iUrl2 = "http://65.108.253.229:8000/get_distance?user1_id=" + userId + "&user2_id=" + otherId;
                 this.http.post(iUrl2, JSON.stringify({})).subscribe(data => {
                     this.distance = data["dist"];
                 });

@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'in-game',
     loadChildren: () => import('./in-game/in-game.module').then( m => m.InGamePageModule)
   },
+  {
+    path: 'win',
+    loadChildren: () => import('./win/win.module').then( m => m.WinPageModule)
+  },
+  {
+    path: 'lose',
+    loadChildren: () => import('./lose/lose.module').then( m => m.LosePageModule)
+  },
 ];
 
 @NgModule({

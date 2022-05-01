@@ -37,11 +37,11 @@ let UserServiceService = class UserServiceService {
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__.HttpHeaders({ 'Content-Type': 'application/json' })
         };
-        var iUrl = "http://192.168.9.227:8000/start?description=" + description;
+        var iUrl = "http://65.108.253.229:8000/start?description=" + description;
         this.http.post(iUrl, JSON.stringify({})).subscribe(data => {
             console.log(data);
             this.userInfo.next({ 'userId': data["user_id"], 'userCode': data['user_code'], 'coords': [], desc: '' });
-            iUrl = "http://192.168.9.227:8000/ask_game?user_id=" + data["user_id"];
+            iUrl = "http://65.108.253.229:8000/ask_game?user_id=" + data["user_id"];
             this.startGameInfo.subscribe(dataEnd => {
                 if (dataEnd !== undefined) {
                     if (dataEnd["found"] == true) {

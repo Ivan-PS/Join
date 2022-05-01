@@ -1,15 +1,18 @@
-<ion-content style="height: 100%; background-color: #DFEC46 !important;">
+<ion-content color = "secondary"  style="height: 100%; background-color: #DFEC46 !important;">
   <ion-grid id ="container">
     <ion-row>
       <ion-col class = "buttonText" >
-        <ion-card>
+        <ion-card color = "primary">
           <ion-card-header>
-            <ion-card-title>
-              Explain something about You  
+            <ion-card-title color = "secondary">
+              <ion-text color = "secondary">
+                Explain something about You  
+              </ion-text>
+             
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-textarea [(ngModel)] = "description">
+            <ion-textarea [(ngModel)] = "description"  color = "secondary">
               
             </ion-textarea>
           </ion-card-content>
@@ -18,10 +21,11 @@
     </ion-row>    
     <ion-row>
       <ion-col>
-        <ion-card (click) = "goToSearch()">
+        <ion-card (click) = "goToSearch()" color = "primary">
           <ion-card-header>
-            <ion-card-title>
-              PLAY
+            <ion-card-title color = "secondary">
+              <ion-text color = "secondary">PLAY</ion-text>
+              
             </ion-card-title>
           </ion-card-header>
         </ion-card>

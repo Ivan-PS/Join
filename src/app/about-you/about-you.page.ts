@@ -22,7 +22,7 @@ export class AboutYouPage implements OnInit {
   goToSearch(){
 
     this.router.navigate(['/search']);
-    var iUrl = "http://192.168.9.227:8000/start?description="+this.description;
+    var iUrl = "http://65.108.253.229:8000/start?description="+this.description;
     this.userService.startSearch(this.description);
   }
 

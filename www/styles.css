@@ -4,14 +4,14 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #5B2E2E;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
   /** secondary **/
-  --ion-color-secondary: #3dc2ff;
+  --ion-color-secondary: #dfec46;
   --ion-color-secondary-rgb: 61, 194, 255;
   --ion-color-secondary-contrast: #ffffff;
   --ion-color-secondary-contrast-rgb: 255, 255, 255;
@@ -311,7 +311,7 @@ html.ios ion-modal.modal-card .ion-page {
   border-top-left-radius: var(--border-radius);
 }
 .ion-color-primary {
-  --ion-color-base: var(--ion-color-primary, #3880ff) !important;
+  --ion-color-base: var(--ion-color-primary, #5B2E2E) !important;
   --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
   --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
   --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
@@ -319,7 +319,7 @@ html.ios ion-modal.modal-card .ion-page {
   --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
 .ion-color-secondary {
-  --ion-color-base: var(--ion-color-secondary, #3dc2ff) !important;
+  --ion-color-base: var(--ion-color-secondary, #dfec46) !important;
   --ion-color-base-rgb: var(--ion-color-secondary-rgb, 61, 194, 255) !important;
   --ion-color-contrast: var(--ion-color-secondary-contrast, #fff) !important;
   --ion-color-contrast-rgb: var(--ion-color-secondary-contrast-rgb, 255, 255, 255) !important;
@@ -724,7 +724,7 @@ html {
 }
 a {
   background-color: transparent;
-  color: var(--ion-color-primary, #3880ff);
+  color: var(--ion-color-primary, #5B2E2E);
 }
 h1,
 h2,
